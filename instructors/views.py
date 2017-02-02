@@ -16,15 +16,21 @@ def home(request):
 		instructor.office_hours=str(random.randrange(11,30,1))	
 		instructor.save()'''
 	#uncomment the followuing to populate ?
-	file = open('instructors/data.csv','rt')
+	'''file = open('instructors/data.csv','rt')
 	reader = csv.reader(file)
 	for row in reader  :
 		if row[0] and row[1] and row[2]:
 			i = Instructor.objects.create(first_name=row[1],last_name=row[2],email=row[0])
 			print i.email , i.first_name, i.last_name
-	file.close()
-	Instructors = Instructor.objects.all()
-	return render(request,'instructors/index.html',{'Instructors':Instructors})
+	file.close()'''
+	h = Instructor.objects.all()
+	i =0 
+	'''for x in h :
+		print i 
+		i= i+1 
+		x.phone_number = "00962789779499"
+		x.save()'''
+	return render(request,'instructors/index.html',{'h':h})
 
 def results(request):
 	if len(request.GET['search']) > 2 :

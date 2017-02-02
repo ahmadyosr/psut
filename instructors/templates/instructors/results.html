@@ -1,16 +1,17 @@
 {% extends 'instructors/base.html' %}
 {% block search %}
+<p style="text-align:center;">"{{request.GET.search}}":نتائج البحث لـ </p>
 {% if results_list.count > 2 %}
 <div class="list-group" >
 	{% for inst in results_list %}
-	<a href="{% url 'instructor2' inst.id %}" class="list-group-item " >{{inst.last_name}}</a>
+	<a href="{% url 'instructor2' inst.id %}" class="list-group-item " >{{inst.first_name|title}} {{inst.last_name|title}}</a>
 	{% endfor %}
 </div>
 {% else %}
 {% for inst in results_list %}
 <div class="panel panel-primary"> <!-- panel-primary -->
       <div class="panel-heading">
-        <h3 class="panel-title">{{inst.last_name}}</h3>
+        <h3 class="panel-title">{{inst.first_name|title}} {{inst.last_name|title}}</h3>
       </div>
       <div class="panel-body">
      <span class="glyphicon glyphicon-envelope" style="margin-right:7px;"></span>{{inst.email}}</br>
@@ -25,7 +26,7 @@
 {% endfor %}
 {% endif %}
 {% if request.META.HTTP_REFERER  %}
-<button onclick="window.location.href='{{request.META.HTTP_REFERER}}'" type="button" class="btn btn-primary">رجوع</button>
+<button onclick="window.location.href='/home/'" type="button" class="btn btn-primary">رجوع</button>
 {% else %}
 <button onclick="window.location.href='/home/'" type="button" class="btn btn-primary">الرئيسية</button>
 {% endif %}

@@ -2,7 +2,7 @@
 {% block search %}
 <div class="panel panel-primary"> <!-- panel-primary -->
       <div class="panel-heading">
-        <h3 class="panel-title">أحمد يسر المشني</h3>
+        <h3 class="panel-title">{{inst.first_name|title}} {{inst.last_name|title}}</h3>
       </div>
       <div class="panel-body">
      <span class="glyphicon glyphicon-envelope" style="margin-right:7px;"></span>{{inst.email}}</br>
