@@ -1,0 +1,21 @@
+{% extends 'instructors/base.html' %}
+{% block search %}{% load static %}
+<img src="{% static 'two.png' %}" style="max-height=150px;max-width:150px;"   />
+<p style="margin-top:5px;">الساعات المكتبية وإيميلات الكادر التدريسي لجامعة سمية </p>
+<form action="/results/" method="GET" style="margin-top:30px;" >
+<div class="row">
+    <div class="col-lg-4 col-lg-offset-4">
+        <div class="input-group">
+			<span class="input-group-btn">
+                <input class="btn btn-default" type="submit" value="ابحث"/>
+            </span>
+            <input type="text" name="search" class="form-control" style="text-align:center;" placeholder="أدخل اسم المدرس باللغة العربية" oninvalid="this.setCustomValidity(' ادخل مقطع من اسم المدرس باللغة العربية')" required />
+        </div><!-- /input-group -->
+		{% if request.GET.search %}
+<p style="text-align:right;color:red;">{{ request.GET.search }}</p>
+		{% endif %}
+    </div><!-- /.col-lg-4 -->
+</div><!-- /.row -->
+</form>
+
+{% endblock %}

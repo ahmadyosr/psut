@@ -1,0 +1,23 @@
+{% extends 'instructors/base.html' %}
+{% block search %}
+<div class="panel panel-primary"> <!-- panel-primary -->
+      <div class="panel-heading">
+        <h3 class="panel-title">أحمد يسر المشني</h3>
+      </div>
+      <div class="panel-body">
+     <span class="glyphicon glyphicon-envelope" style="margin-right:7px;"></span>{{inst.email}}</br>
+	 <span class="glyphicon glyphicon-earphone"style="margin-right:7px;"></span>{{inst.phone_number}}</br>
+      </div>
+	  <ul class="list-group ">
+	  <li class="list-group-item" style="background-color:#f2f2f2;">الساعات المكتبية </li>
+	  <li class="list-group-item"style="background-color:#f2f2f2;">{{inst.office_hours}}</li>
+	  <li class="list-group-item"style="background-color:#f2f2f2;">{{inst.office_hours}}</li>
+	  </ul>
+</div>
+
+{% if request.META.HTTP_REFERER  %}
+<button onclick="window.location.href='{{request.META.HTTP_REFERER}}'" type="button" class="btn btn-primary">رجوع</button>
+{% else %}
+<button onclick="window.location.href='/home/'" type="button" class="btn btn-primary">الرئيسية</button>
+{% endif %}
+{% endblock %}
