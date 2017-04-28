@@ -8,7 +8,7 @@ from django.core.urlresolvers import reverse
 # Create your views here.
 
 def home(request):
-
+	print 'shit'
 	#here to populate with numbers and officehours.
 	'''instructors = Instructor.objects.all()
 	for instructor in instructors : 
