@@ -7,12 +7,13 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('instructors', '0003_auto_20170201_1953'),
+        ('instructors', '0001_initial'),
     ]
 
     operations = [
-        migrations.RemoveField(
+        migrations.AddField(
             model_name='instructor',
-            name='office_hours',
+            name='school',
+            field=models.ForeignKey(blank=True, to='instructors.School', null=True),
         ),
     ]

@@ -7,14 +7,13 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('instructors', '0005_instructor_office_hours'),
+        ('instructors', '0002_instructor_school'),
     ]
 
     operations = [
-        migrations.AddField(
+        migrations.AlterField(
             model_name='instructor',
-            name='notes',
-            field=models.CharField(default='ho', max_length=200),
-            preserve_default=False,
+            name='doorsheet',
+            field=models.FileField(null=True, upload_to=b'', blank=True),
         ),
     ]

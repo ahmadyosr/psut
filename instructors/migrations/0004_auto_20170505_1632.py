@@ -7,18 +7,18 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('instructors', '0006_instructor_notes'),
+        ('instructors', '0003_auto_20170505_1618'),
     ]
 
     operations = [
-        migrations.AlterField(
+        migrations.RenameField(
             model_name='instructor',
-            name='role',
-            field=models.ForeignKey(blank=True, to='instructors.Role', null=True),
+            old_name='school',
+            new_name='school2',
         ),
-        migrations.AlterField(
-            model_name='role',
-            name='title',
+        migrations.AddField(
+            model_name='instructor',
+            name='shool',
             field=models.CharField(max_length=200, null=True, blank=True),
         ),
     ]

@@ -1,21 +1,51 @@
 {% extends 'instructors/base.html' %}
 {% block search %}{% load static %}
-<img src="{% static 'two.png' %}" style="max-height=150px;max-width:150px;"   />
-<p style="margin-top:5px;">الساعات المكتبية وإيميلات الكادر التدريسي لجامعة سمية </p>
-<form action="/results/" method="GET" style="margin-top:30px;" >
+<style>/* Style the tab */
+
+.activated {
+	background-color: black;
+}
+</style>
+<!-- <img src="{% static 'folder/two.png' %}" style="max-height=150px;max-width:150px;"   /> -->
+
+<p style="margin-top:5px;">الساعات المكتبية و إيميلات مدرسي جامعة الاميرة سمية</p>
+<form action="/results/" method="GET" style="margin-top:10px;" >
 <div class="row">
     <div class="col-lg-4 col-lg-offset-4">
         <div class="input-group">
 			<span class="input-group-btn">
                 <input class="btn btn-default" type="submit" value="ابحث"/>
             </span>
-            <input type="text" name="search" class="form-control" style="text-align:center;" placeholder="أدخل اسم المدرس باللغة العربية" oninvalid="this.setCustomValidity(' ادخل مقطع من اسم المدرس باللغة العربية')" required />
-        </div><!-- /input-group -->
+            <input type="text" name="search" class="form-control" style="text-align:center;"
+			placeholder="أدخل اسم المدرس باللغة العربية" oninvalid="this.setCustomValidity('
+			ادخل مقطع من اسم المدرس باللغة العربية')" required />
+        </form>
+		</div><!-- /input-group -->
 		{% if request.GET.search %}
 <p style="text-align:right;color:red;">{{ request.GET.search }}</p>
 		{% endif %}
     </div><!-- /.col-lg-4 -->
 </div><!-- /.row -->
-</form>
+
+<div class="container-fluid" style="max-width:400px;">
+<div class="row">
+
+<div class="container" style="max-width:400px;margin-top:20px;">
+<h4>اختر كلية  </h4>
+<input type="button" onclick="location.href='{% url 'home'%}?school=business';" 	 class="btn btn-default col-sm-4
+{% if instructors.0.school.title == 'business'%} active{% endif %}" value="أعمال" />
+<input type="button" onclick="location.href='{% url 'home'%}?school=it';" class="btn btn-default col-sm-4 
+{% if instructors.0.school.title == 'it'%} active{% endif %}" value="آي تي " />
+<input type="button" onclick="location.href='{% url 'home'%}?school=engineering';" class="btn btn-default col-sm-4 
+{% if instructors.0.school.title == 'engineering'%} active{% endif %}" value="هندسة"/>
+</div>
+<div class="list-group" style="margin-left:auto;margin-right:auto;width:90%;">
+  {% for inst in instructors %}
+  <a href="{% url 'instructor' id=inst.id %}" class="list-group-item">{{inst.arabic_name|title}}</a>
+  {% endfor %}
+</div>
+</div>
+</div>
+
 
 {% endblock %}
