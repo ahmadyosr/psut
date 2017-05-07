@@ -15,7 +15,7 @@ class Department0(models.Model):
 		return self.title 	
 		
 
-class OfficeHours(models.Model):
+class OfficeHours1(models.Model):
 	office_hours = models.CharField(max_length=200)
 	def __unicode__(self):
 		return self.office_hours
@@ -33,8 +33,8 @@ class Instructor(models.Model):
 	school = models.ForeignKey(School,blank=True,null=True)
 	arabic_name = models.CharField(max_length=200)
 	english_name = models.CharField(max_length=200 , blank=True , null = True )
-	email= models.CharField(max_length=200)
-	office_hours_1_start = models.ForeignKey(OfficeHours ,blank = True , null = True )#just populate this with officehours beggining time and will  be
+	email= models.EmailField(max_length=254)
+	office_hours_1_start = models.ForeignKey(OfficeHours1 ,blank = True , null = True )#just populate this with officehours beggining time and will  be
 	office_hours_2_start = models.ForeignKey(OfficeHours2 ,blank = True , null = True )#just populate this with officehours beggining time and it will  be
 	notes = models.CharField(max_length=200,blank = True,null = True)
 	visits = models.IntegerField(default = 0 )

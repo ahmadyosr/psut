@@ -1,5 +1,5 @@
 from django.contrib import admin
-from instructors.models import School, Instructor , Department0
+from instructors.models import School, Instructor , Department0, OfficeHours1, OfficeHours2
 # Register your models here.
 from django.forms import TextInput , ChoiceField
 from django.db import models
@@ -17,3 +17,5 @@ class InstructorAdmin(admin.ModelAdmin):
 admin.site.register(School)
 admin.site.register(Department0)
 admin.site.register(Instructor,InstructorAdmin)
+admin.site.register(OfficeHours1)
+admin.site.register(OfficeHours2)
