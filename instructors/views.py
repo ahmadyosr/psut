@@ -37,7 +37,7 @@ def results(request):
 	else:
 		return HttpResponseRedirect('/home/?search=كلمة البحث قصيرة جدا')
 	
-	
+	s
 def instructor(request, id):
 	inst = Instructor.objects.get(id= id)
 	return render(request,'instructors/instructor.html',{'inst':inst})
