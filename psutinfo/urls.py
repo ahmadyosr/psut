@@ -11,6 +11,7 @@ urlpatterns = [
     # url(r'^blog/', include('blog.urls')),
 	
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^$',views.home, name="thehome"),
     url(r'^results/$',views.results,name="results"),
     url(r'^home/$',views.home,name="home"),
     url(r'^instructor/(?P<id>[0-9]+)/$',views.instructor,name="instructor"),

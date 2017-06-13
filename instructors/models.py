@@ -10,7 +10,7 @@ class School(models.Model):
 		
 class Department0(models.Model):
 	school = models.ForeignKey(School)
-	title = models.CharField(max_length =200 , blank = True , null = True ) 
+	title = models.CharField(max_length =200 , blank = True , null = True )
 	def __unicode__(self):
 		return self.title 	
 		
@@ -18,19 +18,24 @@ class Department0(models.Model):
 class OfficeHours1(models.Model):
 	office_hours = models.CharField(max_length=200)
 	def __unicode__(self):
-		return self.office_hours
+		return str(self.office_hours)
 
 		
 class OfficeHours2(models.Model):
 	office_hours2 = models.CharField(max_length=200)
 	def __unicode__(self):
-		return self.office_hours2
+		return str(self.office_hours2)
 	
 		
-		
+class OfficeLocations(models.Model):
+	office_location0 = models.CharField(max_length=200)
+	def __unicode__(self):
+		return self.office_location
+
 class Instructor(models.Model):
 	department = models.ForeignKey(Department0,blank=True,null=True)
 	school = models.ForeignKey(School,blank=True,null=True)
+	office_location = models.ForeignKey(OfficeLocations,blank= True , null = True)
 	arabic_name = models.CharField(max_length=200)
 	english_name = models.CharField(max_length=200 , blank=True , null = True )
 	email= models.EmailField(max_length=254)

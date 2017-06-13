@@ -2,17 +2,41 @@
 {% block search %}
 <div class="panel panel-primary" style="margin-right:auto;margin-left: auto;;width:100%;max-width:400px;"> <!-- panel-primary -->
       <div class="panel-heading">
-        <h3 class="panel-title">ffffffff{{inst.first_name|title}} {{inst.last_name|title}}</h3>
+
+        <h3 class="panel-title" style="display:inline;font-size:150%;">{{inst.english_name|title}} </h3>
+		<p style="color:white;display:inline;">- {{inst.department|title}} Dep. </p>
       </div>
       <div class="panel-body">
 	   <ul class="list-group ">
-	  <li class="list-group-item" style="background-color:#f2f2f2;">     <span class="glyphicon glyphicon-envelope" style="margin-right:7px;"></span>{{inst.email}}</br></li>
+	  <li class="list-group-item" style="background-color:#f2f2f2;">
+		  <span class="glyphicon glyphicon-envelope" style="margin-right:7px;"></span><p style="font-size:150%;display:inline;">{{inst.email}}</p></br></li>
 	  </ul>
 	 <ul class="list-group ">
 	  <li class="list-group-item" style="background-color:#f2f2f2;">الساعات المكتبية </li>
-	  <li class="list-group-item"style="background-color:#f2f2f2;">23232{{inst.office_hours_1_start}}</li>
-	  <li class="list-group-item"style="background-color:#f2f2f2;">3232{{inst.office_hours_2_start}}</li>
+	  <li class="list-group-item"style="background-color:#f2f2f2;">
+	  {% if inst.office_hours_1_start %}
+		  {{inst.office_hours_1_start.office_hours}}
+	  {% else %}
+	  coming soon ,wallah :)
+	  {% endif %}
+	  </li>
+	  <li class="list-group-item"style="background-color:#f2f2f2;">
+	  {% if inst.office_hours_2_start %}
+	  {{inst.office_hours_2_start.office_hours}}
+	  {% else %}
+	  coming soon ,wallah :)
+	  {% endif %}
+	  </li>
 	  </ul>
+
+	<div>
+	{% if request.META.HTTP_REFERER  %}
+	<button onclick="window.location.href='{{request.META.HTTP_REFERER}}'" type="button" class="btn btn-primary">رجوع</button>
+	{% else %}
+	<button onclick="window.location.href='/home/'" type="button" class="btn btn-primary">الرئيسية</button>
+	{% endif %}
+	</div>
+
       </div>
 	  <ul class="list-group ">
 	  <li class="list-group-item"style="background-color:#f2f2f2;">
@@ -20,9 +44,4 @@
 	  </ul>
 </div>
 
-{% if request.META.HTTP_REFERER  %}
-<button onclick="window.location.href='{{request.META.HTTP_REFERER}}'" type="button" class="btn btn-primary">رجوع</button>
-{% else %}
-<button onclick="window.location.href='/home/'" type="button" class="btn btn-primary">الرئيسية</button>
-{% endif %}
 {% endblock %}

@@ -9,8 +9,8 @@
 <!-- <img src="{% static 'folder/two.png' %}" style="max-height=150px;max-width:150px;"   /> -->
 
 <p style="margin-top:5px;">الساعات المكتبية و إيميلات مدرسي جامعة الاميرة سمية</p>
-<form action="/results/" method="GET" style="margin-top:10px;" >
-<div class="row">
+<form action="/results/" method="GET" style="margin-top:10%px;" >
+<div class="row" style="width:100%;">
     <div class="col-lg-4 col-lg-offset-4">
         <div class="input-group">
 			<span class="input-group-btn">
@@ -19,29 +19,37 @@
             <input type="text" name="search" class="form-control" style="text-align:center;"
 			placeholder="أدخل اسم المدرس باللغة العربية" oninvalid="this.setCustomValidity('
 			ادخل مقطع من اسم المدرس باللغة العربية')" required />
-        </form>
+
 		</div><!-- /input-group -->
 		{% if request.GET.search %}
 <p style="text-align:right;color:red;">{{ request.GET.search }}</p>
 		{% endif %}
     </div><!-- /.col-lg-4 -->
 </div><!-- /.row -->
+</form>
 
 <div class="container-fluid" style="max-width:400px;">
 <div class="row">
 
 <div class="container" style="max-width:400px;margin-top:20px;">
 <h4>اختر كلية  </h4>
-<input type="button" onclick="location.href='{% url 'home'%}?school=business';" 	 class="btn btn-default col-sm-4
+<input type="button" onclick="location.href='{% url 'home'%}?school=sciences';" class="btn btn-default col-sm-3
+{% if instructors.0.school.title == 'science'%} active{% endif %}" value="علوم"/>
+<input type="button" onclick="location.href='{% url 'home'%}?school=business';" 	 class="btn btn-default col-sm-3
 {% if instructors.0.school.title == 'business'%} active{% endif %}" value="أعمال" />
-<input type="button" onclick="location.href='{% url 'home'%}?school=it';" class="btn btn-default col-sm-4 
+<input type="button" onclick="location.href='{% url 'home'%}?school=it';" class="btn btn-default col-sm-3
 {% if instructors.0.school.title == 'it'%} active{% endif %}" value="آي تي " />
-<input type="button" onclick="location.href='{% url 'home'%}?school=engineering';" class="btn btn-default col-sm-4 
+<input type="button" onclick="location.href='{% url 'home'%}?school=engineering';" class="btn btn-default col-sm-3
 {% if instructors.0.school.title == 'engineering'%} active{% endif %}" value="هندسة"/>
+
 </div>
 <div class="list-group" style="margin-left:auto;margin-right:auto;width:90%;">
   {% for inst in instructors %}
-  <a href="{% url 'instructor' id=inst.id %}" class="list-group-item">{{inst.arabic_name|title}}</a>
+    <a href="{% url 'instructor' id=inst.id %}" class="list-group-item"style="width:100%;text-align:left;">
+        <p style="color:SALMON;display:inline;">{{inst.department|title}} -  </p>
+        <p style="display:inline;width:auto;">{{inst.english_name|title}}</p>
+    </a>
+
   {% endfor %}
 </div>
 </div>
