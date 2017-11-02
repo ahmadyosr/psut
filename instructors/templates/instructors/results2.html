@@ -1,6 +1,10 @@
 {% extends 'instructors/base.html' %}
 {% block search %}{% load static %}
+
 <p style="text-align:center;">"{{request.GET.search}}":نتائج البحث لـ </p>
+
+
+
 <img src="/static/{{inst.doorsheet}}" />-- here 
 <img src="{% static ''%}{{inst.doorsheet}}" />-- here 
 <img src="{% static ''%}{{inst.doorsheet}}" />-- here 
@@ -13,7 +17,8 @@
 {% if results_list.count > 2 %}
 <div class="list-group" >
 	{% for inst in results_list %}
-	<a href="{% url 'instructor' inst.id %}" class="list-group-item " >{{inst.first_name|title}} {{inst.last_name|title}}</a>
+	<a href="{% url 'instructor' inst.id %}" class="list-group-item " >{{inst.first_name|title}} {{inst.last_n
+	ame|title}}</a>
 	{% endfor %}
 </div>
 {% else %}

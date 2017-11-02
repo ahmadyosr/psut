@@ -15,7 +15,7 @@ def home(request):
 	school = School.objects.get(title = school)
 	instructors =Instructor.objects.filter(school= school)
 	return render(request,'instructors/index.html',{'instructors':instructors})
-
+	
 def results(request):
 	if len(request.GET['search']) > 2 :
 		search_term = request.GET['search']

@@ -7,7 +7,7 @@ class School(models.Model):
 	# Create your models here.
 	def __unicode__(self):
 		return self.title 
-		
+	
 class Department0(models.Model):
 	school = models.ForeignKey(School)
 	title = models.CharField(max_length =200 , blank = True , null = True ) 
@@ -27,20 +27,24 @@ class OfficeHours2(models.Model):
 		return self.office_hours2
 	
 		
-		
+
 class Instructor(models.Model):
 	department = models.ForeignKey(Department0,blank=True,null=True)
+	location  = models.CharField(max_length= 100 , null = True , blank = True )
 	school = models.ForeignKey(School,blank=True,null=True)
 	arabic_name = models.CharField(max_length=200)
 	english_name = models.CharField(max_length=200 , blank=True , null = True )
-	email= models.EmailField(max_length=254)
-	office_hours_1_start = models.ForeignKey(OfficeHours1 ,blank = True , null = True )#just populate this with officehours beggining time and will  be
-	office_hours_2_start = models.ForeignKey(OfficeHours2 ,blank = True , null = True )#just populate this with officehours beggining time and it will  be
+	email= models.EmailField(max_length=254 , blank = True )
+
+	office_hours_1 		 = models.TimeField(auto_now_add = False )
+	office_hours_2 		 = models.TimeField(auto_now_add = False )
+
 	notes = models.CharField(max_length=200,blank = True,null = True)
 	visits = models.IntegerField(default = 0 )
-	doorsheet =  models.FileField(null= True , blank = True )
+	doorsheet =  models.FileField(upload_to="doorsheets/" ,null= True , blank = True  )
+
 	def __unicode__(self):
-		return u"%s%s"% (self.arabic_name,self.english_name)
+		return u"%s %s"% (self.arabic_name,self.english_name)
 		
 
 

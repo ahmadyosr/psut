@@ -32,12 +32,14 @@
 
 <div class="container" style="max-width:400px;margin-top:20px;">
 <h4>اختر كلية  </h4>
-<input type="button" onclick="location.href='{% url 'home'%}?school=business';" 	 class="btn btn-default col-sm-4
+<input type="button" onclick="location.href='{% url 'home'%}?school=business';" 	 class="btn btn-default col-sm-3
 {% if instructors.0.school.title == 'business'%} active{% endif %}" value="أعمال" />
-<input type="button" onclick="location.href='{% url 'home'%}?school=it';" class="btn btn-default col-sm-4 
+<input type="button" onclick="location.href='{% url 'home'%}?school=it';" class="btn btn-default col-sm-3 
 {% if instructors.0.school.title == 'it'%} active{% endif %}" value="آي تي " />
-<input type="button" onclick="location.href='{% url 'home'%}?school=engineering';" class="btn btn-default col-sm-4 
+<input type="button" onclick="location.href='{% url 'home'%}?school=engineering';" class="btn btn-default col-sm-3 
 {% if instructors.0.school.title == 'engineering'%} active{% endif %}" value="هندسة"/>
+<input type="button" onclick="location.href='{% url 'home'%}?school=science';" class="btn btn-default col-sm-3 
+{% if instructors.0.school.title == 'science'%} active{% endif %}" value="علوم"/>
 </div>
 <div class="list-group" style="margin-left:auto;margin-right:auto;width:90%;">
   {% for inst in instructors %}
