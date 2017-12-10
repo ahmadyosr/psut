@@ -13,7 +13,7 @@ def home(request):
 	except :
 		school = 'it'
 	school = School.objects.get(title = school)
-	instructors =Instructor.objects.filter(school= school)
+	instructors =Instructor.objects.filter(college= school)
 	return render(request,'instructors/index.html',{'instructors':instructors})
 	
 def results(request):
