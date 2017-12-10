@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 from django.shortcuts import render
 from django.http import HttpResponse , HttpResponseRedirect
-from instructors.models import Instructor , School
+from instructors.models import Instructor , School , College
 import csv, random
 from django.core.urlresolvers import reverse
 # Create your views here.
