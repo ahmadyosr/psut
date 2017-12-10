@@ -11,6 +11,9 @@ class School(models.Model):
 class College(models.Model):
 	title 		= models.CharField(max_length = 200)
 
+	def __unicode__(self):
+		return self.title 
+		
 class Department0(models.Model):
 	school = models.ForeignKey(School)
 	title = models.CharField(max_length =200 , blank = True , null = True ) 
@@ -36,7 +39,7 @@ class Instructor(models.Model):
 	location  = models.CharField(max_length= 100 , null = True , blank = True )
 	building = models.ForeignKey(School,blank=True,null=True)
 	college 	= models.ForeignKey(College, blank = True , null = True ) 
-	
+
 	arabic_name = models.CharField(max_length=200)
 	english_name = models.CharField(max_length=200 , blank=True , null = True )
 	email= models.EmailField(max_length=254 , blank = True )
