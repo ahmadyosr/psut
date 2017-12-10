@@ -12,7 +12,7 @@ def home(request):
 		school = request.GET['school']
 	except :
 		school = 'it'
-	school = School.objects.get(title = school)
+	school = College.objects.get(title = school)
 	instructors =Instructor.objects.filter(college= school)
 	return render(request,'instructors/index.html',{'instructors':instructors})
 	
