@@ -17,8 +17,7 @@
 {% if results_list.count > 2 %}
 <div class="list-group" >
 	{% for inst in results_list %}
-	<a href="{% url 'instructor' inst.id %}" class="list-group-item " >{{inst.first_name|title}} {{inst.last_n
-	ame|title}}</a>
+	<a href="{% url 'instructor' inst.id %}" class="list-group-item " >{{inst.arabic_name}}</a>
 	{% endfor %}
 </div>
 {% else %}
@@ -29,8 +28,8 @@
 {% endfor %}
 {% endif %}
 {% if request.META.HTTP_REFERER  %}
-<button onclick="window.location.href='/home/'" type="button" class="btn btn-primary">رجوع</button>
+<button onclick="window.location.href='/'" type="button" class="btn btn-primary">رجوع</button>
 {% else %}
-<button onclick="window.location.href='/home/'" type="button" class="btn btn-primary">الرئيسية</button>
+<button onclick="window.location.href='/'" type="button" class="btn btn-primary">الرئيسية</button>
 {% endif %}
 {% endblock %}

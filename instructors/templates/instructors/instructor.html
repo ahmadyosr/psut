@@ -34,6 +34,6 @@
 {% if request.META.HTTP_REFERER  %}
 <button onclick="window.location.href='{{request.META.HTTP_REFERER}}'" type="button" class="btn btn-primary">رجوع</button>
 {% else %}
-<button onclick="window.location.href='/home/'" type="button" class="btn btn-primary">الرئيسية</button>
+<button onclick="window.location.href='/'" type="button" class="btn btn-primary">الرئيسية</button>
 {% endif %}
 {% endblock %}
