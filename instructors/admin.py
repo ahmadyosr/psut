@@ -1,5 +1,5 @@
 from django.contrib import admin
-from instructors.models import School, Instructor , Department0, OfficeHours1, OfficeHours2 , Building , College
+from instructors.models import School, Instructor , Department0, OfficeHours1, OfficeHours2  , College
 # Register your models here.
 from django.forms import TextInput , ChoiceField
 from django.db import models
@@ -15,7 +15,6 @@ class InstructorAdmin(admin.ModelAdmin):
 	list_display_links = None
 
 
-admin.site.register(Building)
 admin.site.register(College)
 admin.site.register(School)
 admin.site.register(Department0)
