@@ -5,7 +5,7 @@
 
 
       <div class="panel-heading">
-        <h3 class="panel-title">{{inst.first_name|title}} {{inst.last_name|title}}</h3>
+        <h3 class="panel-title">{{inst.arabic_name}}</h3>
       </div>
       <div class="panel-body">
 	   <ul class="list-group ">
@@ -13,13 +13,23 @@
 	  </ul>
 	 <ul class="list-group ">
 	  <li class="list-group-item" style="background-color:#f2f2f2;">الساعات المكتبية </li>
-	  <li class="list-group-item"style="background-color:#f2f2f2;">{{inst.office_hours_1}}</li>
-	  <li class="list-group-item"style="background-color:#f2f2f2;">{{inst.office_hours_2}}</li>
+	  {% if inst.office_hours_1 %} 
+	  <li class="list-group-item"style="background-color:#f2f2f2;">{{inst.office_hours_1|time:"H:i"}}
+	  <br>
+	  أحد ، ثلاثاء ، خميس </li>
+	  {% endif %} 
+	  {% if inst.office_hours_2 %} 
+	  <li class="list-group-item"style="background-color:#f2f2f2;">{{inst.office_hours_2|time:"H:i"}}
+	   <br>
+	  اثنين  ، أربعاء 
+	  </li>
+	  
+	  {% endif %} 
 	  </ul>
 	  {% if inst.location %}
 	 <ul class="list-group ">
 	  <li class="list-group-item" style="background-color:#f2f2f2;">الموقع</li>
-	  <li class="list-group-item"style="background-color:#f2f2f2;">{{inst.location}}</li>
+	  <li class="list-group-item"style="background-color:#f2f2f2;">{{inst.building}}{{inst.location}}</li>
 	  </ul>
 	  {% endif %}
       </div>
