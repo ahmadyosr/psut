@@ -15,7 +15,7 @@ def home(request):
 	school = College.objects.get(title = school)
 	instructors =Instructor.objects.filter(college= school)
 	return render(request,'instructors/index.html',{'instructors':instructors})
-	
+
 def results(request):
 	if len(request.GET['search']) > 2 :
 		search_term = request.GET['search']
@@ -33,9 +33,9 @@ def results(request):
 			inst_id = results_list[0].id
 			return HttpResponseRedirect(reverse('instructor',args=[inst_id]))
 		else : 
-			return HttpResponseRedirect('/home/?search=لا يوجد نتائج بحث ')
+			return HttpResponseRedirect('/?search=لا يوجد نتائج بحث ')
 	else:
-		return HttpResponseRedirect('/home/?search=كلمة البحث قصيرة جدا')
+		return HttpResponseRedirect('/?search=كلمة البحث قصيرة جدا')
 	
 	
 def instructor(request, id):
